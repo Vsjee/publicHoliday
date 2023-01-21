@@ -1,2 +1,2 @@
+export * from './holidays';
 export * from './home';
-export * from './index';

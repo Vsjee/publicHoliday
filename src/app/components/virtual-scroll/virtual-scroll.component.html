@@ -1,0 +1,9 @@
+<cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+  <div *cdkVirtualFor="let item of availableCountries" class="example-item">
+    <a routerLink="/holidays/{{ item.countryCode }}">
+      <button mat-button color="primary">
+        {{ item.name }} - {{ item.countryCode }}
+      </button>
+    </a>
+  </div>
+</cdk-virtual-scroll-viewport>

@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { countrieInfoInitialized } from 'src/app/models';
 import { GetAllEndpointsService } from 'src/app/services';
-import { CountryInfo } from 'src/app/types';
-import { switchMap } from 'rxjs/operators';
+import { CountryHolidaysData, CountryInfo } from 'src/app/types';
 
 @Component({
   selector: 'app-holidays',
@@ -11,6 +10,7 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./holidays.component.scss'],
 })
 export class HolidaysComponent {
+  countrieHolidaysData: CountryHolidaysData[] = [];
   countrieInfo: CountryInfo = countrieInfoInitialized;
   countryCode: string | any = '';
 
@@ -19,14 +19,23 @@ export class HolidaysComponent {
     private countryInfo: GetAllEndpointsService
   ) {}
 
-  ngOnInit() {
-    this.countryCode = this.route.snapshot.paramMap.get('country');
+  getCountrieInfo(): void {
+    this.countryInfo.getCountrieInfo(this.countryCode).subscribe((data) => {
+      this.countrieInfo = data;
+    });
+  }
 
+  getCountrieHolidaysData(): void {
     this.countryInfo
       .getCountrieHolidaysData(this.countryCode)
       .subscribe((data) => {
-        this.countrieInfo = data;
-        console.log(this.countrieInfo);
+        this.countrieHolidaysData = data;
       });
+  }
+
+  ngOnInit() {
+    this.countryCode = this.route.snapshot.paramMap.get('country');
+    this.getCountrieInfo();
+    this.getCountrieHolidaysData();
   }
 }

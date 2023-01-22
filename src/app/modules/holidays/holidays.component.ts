@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { countrieInfoInitialized } from 'src/app/models';
 import { GetAllEndpointsService } from 'src/app/services';
 import { CountryHolidaysData, CountryInfo } from 'src/app/types';
@@ -34,7 +34,7 @@ export class HolidaysComponent {
       });
   }
 
-  getFlag(): void {
+  getCountryFlag(): void {
     let cd: string = this.countryCode;
     this.flag = `https://date.nager.at/images/circle-flags/flags/${cd.toLowerCase()}.svg`;
   }
@@ -43,6 +43,6 @@ export class HolidaysComponent {
     this.countryCode = this.route.snapshot.paramMap.get('country');
     this.getCountrieInfo();
     this.getCountrieHolidaysData();
-    this.getFlag();
+    this.getCountryFlag();
   }
 }

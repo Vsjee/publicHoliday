@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AvailableCountriesInfo, CountryInfo } from 'src/app/types';
+import {
+  AvailableCountriesInfo,
+  CountryHolidaysData,
+  CountryInfo,
+} from 'src/app/types';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -15,9 +19,17 @@ export class GetAllEndpointsService {
     );
   }
 
-  getCountrieHolidaysData(countryCode: string): Observable<CountryInfo> {
+  getCountrieInfo(countryCode: string): Observable<CountryInfo> {
     return this.http.get<CountryInfo>(
       `https://date.nager.at/api/v3/CountryInfo/${countryCode}`
+    );
+  }
+
+  getCountrieHolidaysData(
+    countryCode: string
+  ): Observable<CountryHolidaysData[]> {
+    return this.http.get<CountryHolidaysData[]>(
+      `https://date.nager.at/api/v3/PublicHolidays/2022/${countryCode}`
     );
   }
 }

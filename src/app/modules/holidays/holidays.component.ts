@@ -13,6 +13,7 @@ export class HolidaysComponent {
   countrieHolidaysData: CountryHolidaysData[] = [];
   countrieInfo: CountryInfo = countrieInfoInitialized;
   countryCode: string | any = '';
+  flag: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -33,9 +34,15 @@ export class HolidaysComponent {
       });
   }
 
+  getFlag(): void {
+    let cd: string = this.countryCode;
+    this.flag = `https://date.nager.at/images/circle-flags/flags/${cd.toLowerCase()}.svg`;
+  }
+
   ngOnInit() {
     this.countryCode = this.route.snapshot.paramMap.get('country');
     this.getCountrieInfo();
     this.getCountrieHolidaysData();
+    this.getFlag();
   }
 }

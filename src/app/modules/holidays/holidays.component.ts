@@ -18,7 +18,9 @@ export class HolidaysComponent {
   constructor(
     private route: ActivatedRoute,
     private countryInfo: GetAllEndpointsService
-  ) {}
+  ) {
+    this.route.paramMap.subscribe(() => this.ngOnInit());
+  }
 
   getCountrieInfo(): void {
     this.countryInfo.getCountrieInfo(this.countryCode).subscribe((data) => {

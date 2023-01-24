@@ -30,3 +30,19 @@ export interface CountryHolidaysData {
   launchYear: null;
   types: string[];
 }
+
+export interface BorderCountryInfo {
+  commonName: string;
+  officialName: string;
+  countryCode: string;
+  region: string;
+  borders: null;
+}
+export interface BorderCountryInfoWithFlag {
+  commonName: string;
+  officialName: string;
+  countryCode: string;
+  region: string;
+  borders: null;
+  flag: string;
+}

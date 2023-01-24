@@ -27,5 +27,13 @@
   </article>
 </section>
 
-<h2 class="subtitle">Holidays:</h2>
-<section class="country__holidays"></section>
+<section class="country__holidays">
+  <h2 class="subtitle">Holidays:</h2>
+  <article class="holidays">
+    <div *ngFor="let item of countrieHolidaysData">
+      <app-holidays-country-data
+        [holidayData]="item"
+      ></app-holidays-country-data>
+    </div>
+  </article>
+</section>

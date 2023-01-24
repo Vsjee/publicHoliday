@@ -11,4 +11,5 @@ import { CountryHolidaysData } from 'src/app/types';
 })
 export class HolidaysCountryDataComponent {
   @Input() holidayData!: CountryHolidaysData;
+  @Input() index!: number;
 }

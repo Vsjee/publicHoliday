@@ -3,10 +3,27 @@
   margin-top: 2rem;
 }
 
+.subtitle {
+  margin-left: 6%;
+}
+
 .country__info {
   display: flex;
   justify-content: center;
   gap: 1rem;
+}
+
+.container__borders {
+  padding: 5rem 0;
+
+  .borders {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-auto-rows: 120px;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 100px), 1fr));
+    gap: 5%;
+  }
 }
 
 @media screen and (max-width: 540px) {

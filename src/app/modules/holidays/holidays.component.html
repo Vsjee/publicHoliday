@@ -16,12 +16,16 @@
       <li class="list__item">Region: {{ countrieInfo.region }}</li>
     </ul>
   </article>
-  <article class="borders"></article>
 </section>
 
-<h1 class="title">Holidays</h1>
-<section class="country__holidays">
-  <div *ngFor="let item of countrieInfo.borders">
-    <app-border-countries [borderCountry]="item"></app-border-countries>
-  </div>
+<section class="container__borders">
+  <h2 class="subtitle">Border countries:</h2>
+  <article class="borders">
+    <div *ngFor="let item of countrieInfo.borders">
+      <app-border-countries [borderCountry]="item"></app-border-countries>
+    </div>
+  </article>
 </section>
+
+<h2 class="subtitle">Holidays:</h2>
+<section class="country__holidays"></section>

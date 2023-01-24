@@ -1,0 +1,13 @@
+<a routerLink="/holidays/{{ borderCountryWithFlag.countryCode }}">
+  <picture>
+    <img
+      src="{{ borderCountryWithFlag.flag }}"
+      alt="{{ borderCountryWithFlag.commonName }}"
+      width="100"
+    />
+    <figcaption>
+      {{ borderCountryWithFlag.commonName }} -
+      {{ borderCountryWithFlag.countryCode }}
+    </figcaption>
+  </picture>
+</a>

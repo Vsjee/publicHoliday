@@ -1,0 +1,17 @@
+.title {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.country__info {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 540px) {
+  .country__info {
+    align-items: center;
+    flex-direction: column;
+  }
+}

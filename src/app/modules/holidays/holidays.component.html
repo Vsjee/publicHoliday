@@ -30,9 +30,10 @@
 <section class="country__holidays">
   <h2 class="subtitle">Holidays:</h2>
   <article class="holidays">
-    <div *ngFor="let item of countrieHolidaysData">
+    <div *ngFor="let item of countrieHolidaysData; let indexOfelement = index">
       <app-holidays-country-data
         [holidayData]="item"
+        [index]="indexOfelement + 1"
       ></app-holidays-country-data>
     </div>
   </article>

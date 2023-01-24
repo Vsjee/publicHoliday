@@ -1,1 +1,12 @@
-<p>holidays-country-data works!</p>
+<article class="holiday__card">
+  <ul class="card__list">
+    <li class="list__item"><b>Date:</b> {{ holidayData.date }}</li>
+    <li class="list__item"><b>Local name:</b> {{ holidayData.localName }}</li>
+    <li class="list__item"><b>name:</b> {{ holidayData.name }}</li>
+    <li class="list__item"><b>Global:</b> {{ holidayData.global }}</li>
+    <li class="list__item--types">
+      <b>Types: </b>
+      <p *ngFor="let types of holidayData.types">{{ types }}</p>
+    </li>
+  </ul>
+</article>

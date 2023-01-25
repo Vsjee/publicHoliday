@@ -1,1 +1,24 @@
-<p>favorites works!</p>
+<h1 class="title">Favorites Countries</h1>
+<section class="favorites">
+  <div *ngFor="let country of favoriteItemsList" class="favorites__card">
+    <app-favorite-button
+      [favoriteCode]="country.countryCode"
+      [favoriteName]="country.commonName"
+      [favoriteFlag]="country.flag"
+      class="btn"
+    ></app-favorite-button>
+    <a routerLink="/holidays/{{ country.countryCode }}">
+      <picture>
+        <img
+          src="{{ country.flag }}"
+          alt="{{ country.commonName }}"
+          width="100"
+          title="{{ country.commonName }} - {{ country.countryCode }}"
+        />
+        <figcaption>
+          {{ country.commonName }} - {{ country.countryCode }}
+        </figcaption>
+      </picture>
+    </a>
+  </div>
+</section>

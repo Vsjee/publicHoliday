@@ -1,5 +1,24 @@
+<form [formGroup]="form" (ngSubmit)="handleSubmit()" class="form">
+  <mat-form-field>
+    <mat-label>Search a country</mat-label>
+    <input
+      type="text"
+      placeholder="search"
+      formControlName="search"
+      (change)="handleChange()"
+      matInput
+    />
+  </mat-form-field>
+  <button type="submit" mat-button color="primary" class="submit">
+    Search
+  </button>
+</form>
+
 <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
-  <div *cdkVirtualFor="let item of availableCountries" class="example-item">
+  <div
+    *cdkVirtualFor="let item of searchAvailableCountries"
+    class="example-item"
+  >
     <a routerLink="/holidays/{{ item.countryCode }}">
       <button mat-button color="primary">
         {{ item.name }} - {{ item.countryCode }}

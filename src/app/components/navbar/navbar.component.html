@@ -6,7 +6,9 @@
   </a>
   <h2 *ngIf="!show">Holidays worldwide</h2>
   <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon" aria-label="favorite">
-    <mat-icon>favorite</mat-icon>
-  </button>
+  <a routerLink="favorites">
+    <button mat-icon-button class="example-icon" aria-label="favorite">
+      <mat-icon>favorite</mat-icon>
+    </button>
+  </a>
 </mat-toolbar>

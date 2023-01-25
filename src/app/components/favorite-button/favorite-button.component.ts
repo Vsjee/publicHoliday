@@ -53,8 +53,7 @@ export class FavoriteButtonComponent {
       flag: this.favoriteFlag,
     };
     this.store.dispatch(
-      removeFavoriteItem({ favoriteCountryName: 'Colombia' })
+      removeFavoriteItem({ favoriteItem: this.favoriteItem })
     );
-    console.log(this.favoriteItem);
   }
 }

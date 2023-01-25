@@ -8,5 +8,5 @@ export const addFavoriteItem = createAction(
 
 export const removeFavoriteItem = createAction(
   '[Favorite Countries] item was successfully removed',
-  props<{ favoriteCountryName: string }>()
+  props<{ favoriteItem: FavoriteInfo }>()
 );

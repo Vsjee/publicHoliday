@@ -21,11 +21,11 @@ export const favoriteReducer = createReducer(
     ],
   })),
 
-  on(removeFavoriteItem, (state, { favoriteCountryName }) => ({
+  on(removeFavoriteItem, (state, { favoriteItem }) => ({
     ...state,
     favorites: [
       ...state.favorites.filter(
-        (item) => item.commonName !== favoriteCountryName
+        (item) => item.commonName !== favoriteItem.commonName
       ),
     ],
   }))

@@ -1,7 +1,13 @@
 .example-viewport {
-  height: 200px;
+  height: 300px;
   width: 80%;
+  display: grid;
+  margin: 0 auto;
   border: 1px solid black;
+}
+
+a {
+  text-decoration: none;
 }
 
 .example-item {

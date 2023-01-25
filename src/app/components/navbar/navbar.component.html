@@ -1,25 +1,12 @@
 <mat-toolbar>
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with menu icon"
-  >
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>My App</span>
+  <a routerLink="home">
+    <button mat-icon-button class="example-icon" aria-label="home" *ngIf="show">
+      <mat-icon>home</mat-icon>
+    </button>
+  </a>
+  <h2 *ngIf="!show">Holidays worldwide</h2>
   <span class="example-spacer"></span>
-  <button
-    mat-icon-button
-    class="example-icon favorite-icon"
-    aria-label="Example icon-button with heart icon"
-  >
+  <button mat-icon-button class="example-icon" aria-label="favorite">
     <mat-icon>favorite</mat-icon>
-  </button>
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with share icon"
-  >
-    <mat-icon>share</mat-icon>
   </button>
 </mat-toolbar>

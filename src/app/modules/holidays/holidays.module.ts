@@ -6,6 +6,7 @@ import {
   BorderCountriesComponent,
   HolidaysCountryDataComponent,
 } from './components';
+import { FavoriteButtonComponent } from 'src/app/components';
 
 @NgModule({
   declarations: [HolidaysComponent],
@@ -14,6 +15,7 @@ import {
     HolidaysRoutingModule,
     BorderCountriesComponent,
     HolidaysCountryDataComponent,
+    FavoriteButtonComponent,
   ],
 })
 export class HolidaysModule {}

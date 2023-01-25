@@ -1,4 +1,9 @@
 <h1 class="title">{{ countrieInfo.commonName }}</h1>
+<app-favorite-button
+  [favoriteName]="countrieInfo.commonName"
+  [favoriteCode]="countrieInfo.countryCode"
+  [favoriteFlag]="flag"
+></app-favorite-button>
 <section class="country__info">
   <picture>
     <img

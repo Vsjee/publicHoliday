@@ -1,0 +1,7 @@
+<button mat-icon-button *ngIf="show" (click)="addItem()">
+  <mat-icon>favorite</mat-icon>
+</button>
+
+<button mat-icon-button *ngIf="!show" (click)="removeItem()" color="primary">
+  <mat-icon>close</mat-icon>
+</button>

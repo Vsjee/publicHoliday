@@ -1,0 +1,35 @@
+.title {
+  text-align: center;
+  margin: 5rem 0;
+}
+
+.btn {
+  position: relative;
+  left: 45px;
+  top: 20px;
+}
+
+.favorites {
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: 150px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr));
+}
+
+.favorites__card {
+  display: grid;
+  place-content: center;
+  text-align: center;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .favorites {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 120px), 1fr));
+  }
+}

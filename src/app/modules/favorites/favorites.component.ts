@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { key } from 'src/app/components';
 import { FavoriteInfo } from 'src/app/models';
 import { getLocalStorageData } from 'src/app/utilities';
 
@@ -13,7 +14,7 @@ export class FavoritesComponent {
   constructor() {}
 
   ngOnInit(): void {
-    let parseData = getLocalStorageData();
+    let parseData = getLocalStorageData(key);
     this.favoriteItemsList = parseData;
   }
 }

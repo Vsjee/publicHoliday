@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { FavoriteInfo } from 'src/app/models';
-import { AppState } from 'src/app/state';
-import { getFavoriteItems } from 'src/app/state/favorites/favorites.selectors';
+import { getLocalStorageData } from 'src/app/utilities';
 
 @Component({
   selector: 'app-favorites',
@@ -12,11 +10,10 @@ import { getFavoriteItems } from 'src/app/state/favorites/favorites.selectors';
 export class FavoritesComponent {
   favoriteItemsList: FavoriteInfo[] = [];
 
-  constructor(private store: Store<AppState>) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.store.select(getFavoriteItems).subscribe((data) => {
-      this.favoriteItemsList = data;
-    });
+    let parseData = getLocalStorageData();
+    this.favoriteItemsList = parseData;
   }
 }

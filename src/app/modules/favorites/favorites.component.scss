@@ -13,6 +13,7 @@
 .favorites {
   width: 90%;
   margin: 0 auto;
+  padding-bottom: 5rem;
   display: grid;
   grid-template-rows: 150px;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr));

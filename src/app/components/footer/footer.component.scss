@@ -1,0 +1,13 @@
+.footer {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 5px;
+  margin: auto auto;
+  border-top: 1px solid black;
+
+  .footer__media {
+    display: inline-flex;
+    gap: 10px;
+  }
+}

@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Event, NavigationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { FavoriteInfo } from 'src/app/models';
+import { OpenSnackService } from 'src/app/services';
 import { AppState } from 'src/app/state';
 import {
   addFavoriteItem,
@@ -28,8 +29,13 @@ export class FavoriteButtonComponent {
   @Input() favoriteFlag!: string;
   favoriteItem!: FavoriteInfo;
   show: boolean = false;
+  stateData: FavoriteInfo[] = [];
 
-  constructor(private router: Router, private store: Store<AppState>) {
+  constructor(
+    private openSnack: OpenSnackService,
+    private router: Router,
+    private store: Store<AppState>
+  ) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         if (event.url === 'favorites') {
@@ -41,30 +47,51 @@ export class FavoriteButtonComponent {
     });
   }
 
-  addItem(): void {
-    this.favoriteItem = {
+  fillFavoriteItem(): FavoriteInfo {
+    let favoriteItem: FavoriteInfo = {
       commonName: this.favoriteName,
       countryCode: this.favoriteCode,
       flag: this.favoriteFlag,
     };
-    this.store.dispatch(addFavoriteItem({ favoriteItem: this.favoriteItem }));
+    return favoriteItem;
+  }
+
+  setLocal(): void {
     this.store.select(getFavoriteItems).subscribe((data) => {
       setLocalStorage<FavoriteInfo[]>(key, data);
     });
   }
 
+  getStateData(): void {
+    this.store.select(getFavoriteItems).subscribe((data) => {
+      this.stateData = data;
+    });
+  }
+
+  addItem(): void {
+    this.getStateData();
+
+    let find = this.stateData.some(
+      (data: FavoriteInfo) => data.commonName === this.favoriteName
+    );
+
+    if (find) {
+      this.openSnack.openSnack('item already exists');
+    } else {
+      this.favoriteItem = this.fillFavoriteItem();
+      this.store.dispatch(addFavoriteItem({ favoriteItem: this.favoriteItem }));
+      this.setLocal();
+      this.openSnack.openSnack('item was sucessfully added');
+    }
+  }
+
   removeItem(): void {
-    this.favoriteItem = {
-      commonName: this.favoriteName,
-      countryCode: this.favoriteCode,
-      flag: this.favoriteFlag,
-    };
+    this.favoriteItem = this.fillFavoriteItem();
     this.store.dispatch(
       removeFavoriteItem({ favoriteItem: this.favoriteItem })
     );
-    this.store.select(getFavoriteItems).subscribe((data) => {
-      setLocalStorage<FavoriteInfo[]>(key, data);
-    });
+    this.setLocal();
+    this.openSnack.openSnack('item was sucessfully removed');
     window.location.reload();
   }
 }

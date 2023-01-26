@@ -1,10 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
+import { key } from 'src/app/components';
 import { FavoriteState } from 'src/app/models';
+import { getLocalStorageData } from 'src/app/utilities';
 import { addFavoriteItem, removeFavoriteItem } from './favorites.actions';
 
 export const favoriteInitialState: FavoriteState = {
   loading: false,
-  favorites: [],
+  favorites: getLocalStorageData(key),
 };
 
 export const favoriteReducer = createReducer(

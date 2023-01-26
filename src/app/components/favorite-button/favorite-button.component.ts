@@ -10,6 +10,10 @@ import {
   addFavoriteItem,
   removeFavoriteItem,
 } from 'src/app/state/favorites/favorites.actions';
+import { getFavoriteItems } from 'src/app/state/favorites/favorites.selectors';
+import { setLocalStorage } from 'src/app/utilities';
+
+export let key: string = 'favorites';
 
 @Component({
   standalone: true,
@@ -44,6 +48,9 @@ export class FavoriteButtonComponent {
       flag: this.favoriteFlag,
     };
     this.store.dispatch(addFavoriteItem({ favoriteItem: this.favoriteItem }));
+    this.store.select(getFavoriteItems).subscribe((data) => {
+      setLocalStorage<FavoriteInfo[]>(key, data);
+    });
   }
 
   removeItem(): void {
@@ -55,5 +62,9 @@ export class FavoriteButtonComponent {
     this.store.dispatch(
       removeFavoriteItem({ favoriteItem: this.favoriteItem })
     );
+    this.store.select(getFavoriteItems).subscribe((data) => {
+      setLocalStorage<FavoriteInfo[]>(key, data);
+    });
+    window.location.reload();
   }
 }
